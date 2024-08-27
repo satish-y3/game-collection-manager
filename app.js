@@ -3,8 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+
+const morgan = require('morgan');
+app.use(morgan('dev'));
+
 
 mongoose.connect('mongodb://localhost:27017/gameCollectionDB', {
    
